@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Integra y potencia tu negocio con MCP Servers</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #e8eaf6 0%, #f5f5f5 100%);
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Header */
+        header {
+            text-align: center;
+            padding: 60px 20px 40px;
+        }
+
+        .header-badge {
+            display: inline-flex;
+            align-items: center;
+            background: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .header-badge svg {
+            width: 16px;
+            height: 16px;
+            margin-right: 8px;
+            color: #5c6bc0;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #1a237e;
+        }
+
+        .highlight {
+            color: #5c6bc0;
+        }
+
+        .subtitle {
+            color: #666;
+            max-width: 800px;
+            margin: 0 auto 40px;
+            font-size: 1.1rem;
+        }
+
+        .header-filters {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+        }
+
+        .filter-btn {
+            padding: 10px 20px;
+            border: 1px solid #ddd;
+            background: white;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .filter-btn:hover {
+            border-color: #5c6bc0;
+            background: #f5f5ff;
+        }
+
+        .cta-button {
+            background: #1a237e;
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+
+        .cta-button:hover {
+            background: #283593;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(26, 35, 126, 0.3);
+        }
+
+        /* Stats Section */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin: 50px 0;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #5c6bc0;
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        /* Services Section */
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            margin: 60px 0 20px;
+            color: #1a237e;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: #666;
+            max-width: 700px;
+            margin: 0 auto 40px;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin: 40px 0;
+        }
+
+        .service-card {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+            border-color: #5c6bc0;
+        }
+
+        .service-icon {
+            width: 50px;
+            height: 50px;
+            background: #e8eaf6;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            color: #5c6bc0;
+            font-size: 24px;
+        }
+
+        .service-title {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: #1a237e;
+        }
+
+        .service-description {
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .learn-more {
+            color: #5c6bc0;
+            text-decoration: none;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .learn-more:hover {
+            text-decoration: underline;
+        }
+
+        /* Free Solutions */
+        .free-badge {
+            display: inline-block;
+            background: #e8f5e9;
+            color: #2e7d32;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 0.85rem;
+            margin-bottom: 15px;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin: 40px 0;
+        }
+
+        .testimonial-card {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+
+        .stars {
+            color: #ffc107;
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+
+        .testimonial-text {
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            background: #e8eaf6;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: #5c6bc0;
+        }
+
+        .author-info h4 {
+            color: #1a237e;
+            margin-bottom: 5px;
+        }
+
+        .author-info p {
+            color: #999;
+            font-size: 0.9rem;
+        }
+
+        /* Contact Form */
+        .contact-section {
+            background: white;
+            padding: 50px;
+            border-radius: 12px;
+            margin: 60px 0;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            margin-top: 40px;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .contact-icon {
+            width: 40px;
+            height: 40px;
+            background: #e8eaf6;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #5c6bc0;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #5c6bc0;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .submit-btn {
+            width: 100%;
+            background: #5c6bc0;
+            color: white;
+            padding: 14px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .submit-btn:hover {
+            background: #3f51b5;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-badge">
+                <svg fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/>
+                </svg>
+                ¿Qué es un MCP server?
+            </div>
+            
+            <h1>Integra y potencia tu negocio con<br><span class="highlight">MCP Servers</span></h1>
+            
+            <p class="subtitle">
+                Creamos integraciones personalizadas de Protocolo de Contexto de Modelo para 
+                pequeñas y medianas empresas. Conecta tus APIs, bases de datos, ERPs y 
+                documentación para desbloquear el poder de la IA en tus operaciones.
+            </p>
+             <p class="subtitle">
+               L'**enginyeria de context** consisteix a construir sistemes dinàmics per proporcionar la informació i les eines correctes en el format adequat, de manera que el LLM (Model Lingüístic Gran) pugui dur a terme la tasca de manera plausible.
+
+La majoria de les vegades que un agent no funciona de manera fiable, la causa subjacent és que no s'han comunicat al model el context, les instruccions i les eines apropiades.
+            </p>
+
+            <div class="header-filters">
+            <button class="cta-button">⚡ Contactar</button>
+            </div>
+        </header>
+        <!-- Services Section -->
+        <h2 class="section-title">Nuestros Servicios MCP</h2>
+        <p class="section-subtitle">
+            Desde desarrollo personalizado hasta integraciones sin interrupciones, 
+            proporcionamos soluciones MCP adaptadas para cada necesidad empresarial
+        </p>
+
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">🛠️</div>
+                <h3 class="service-title">Desarrollo MCP Personalizado</h3>
+                <p class="service-description">
+                    Soluciones de Protocolo de Contexto de Modelo diseñadas 
+                    específicamente para tus necesidades y flujo de trabajo únicos.
+                </p>
+                <a href="#" class="learn-more">Saber Más →</a>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">🔗</div>
+                <h3 class="service-title">Integración de Bases de Datos y ERP</h3>
+                <p class="service-description">
+                    Conecta tus bases de datos y sistemas ERP existentes 
+                    directamente a MCP para un flujo de datos sin interrupciones.
+                </p>
+                <a href="#" class="learn-more">Saber Más →</a>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">📄</div>
+                <h3 class="service-title">Inteligencia de Documentación</h3>
+                <p class="service-description">
+                    Transforma tu documentación en bases de conocimiento 
+                    inteligentes, buscables y contextuales con MCP.
+                </p>
+                <a href="#" class="learn-more">Saber Más →</a>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">⚡</div>
+                <h3 class="service-title">Integración de APIs</h3>
+                <p class="service-description">
+                    Conecta tus plataformas de APIs existentes con MCP para 
+                    habilitar soluciones poderosas impulsadas por IA.
+                </p>
+                <a href="#" class="learn-more">Saber Más →</a>
+            </div>
+        </div>
+
+        <!-- Free Solutions -->
+        <div style="text-align: center; margin: 60px 0 20px;">
+            <div class="header-badge">
+                <svg fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/>
+                </svg>
+                Gratis para PYMEs
+            </div>
+        </div>
+
+        <h2 class="section-title">Soluciones MCP Gratuitas</h2>
+        <p class="section-subtitle">
+            Comienza que cada pequeña empresa debería tener acceso a la IA. Por eso ofrecemos 
+            estas soluciones MCP gratuitas para ayudar a empezar.
+        </p>
+
+        <div class="services-grid">
+            <div class="service-card">
+                <span class="free-badge">✓ 100% Gratuito</span>
+                <div class="service-icon">✅</div>
+                <h3 class="service-title">MCP Verificado</h3>
+                <p class="service-description">
+                    Solución de comprobación básica obligatoria. Merece 
+                    cumplimientos regulatorios. Monitorea e informes automatizados.
+                </p>
+                <a href="#" class="learn-more">Acceso Gratuito →</a>
+            </div>
+
+            <div class="service-card">
+                <span class="free-badge">✓ 100% Gratuito</span>
+                <div class="service-icon">📄</div>
+                <h3 class="service-title">Analizador de Documentos</h3>
+                <p class="service-description">
+                    Herramienta MCP gratuita para analizar y 
+                    extraer insights de tus documentos empresariales.
+                </p>
+                <a href="#" class="learn-more">Acceso Gratuito →</a>
+            </div>
+
+            <div class="service-card">
+                <span class="free-badge">✓ 100% Gratuito</span>
+                <div class="service-icon">🤖</div>
+                <h3 class="service-title">Asistente IA para PYMEs</h3>
+                <p class="service-description">
+                    Asistente de IA básico diseñado para 
+                    operaciones de pequeñas empresas cotidianas.
+                </p>
+                <a href="#" class="learn-more">Acceso Gratuito →</a>
+            </div>
+        </div>
+
+        <!-- Why Choose Us -->
+        <h2 class="section-title">¿Por qué Elegir Nuestras<br><span class="highlight">Soluciones MCP</span>?</h2>
+
+        <div class="services-grid" style="margin-top: 40px;">
+            <div class="service-card">
+                <div class="service-icon">🎯</div>
+                <h3 class="service-title">Enfoque Experto</h3>
+                <p class="service-description">
+                    Nuestro equipo está formado solo en especialistas 
+                    en MCP que entienden las necesidades de pequeñas y medianas 
+                    empresas en la IA.
+                </p>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">🏆</div>
+                <h3 class="service-title">Enfoque PYMEs</h3>
+                <p class="service-description">
+                    Entendemos los desafíos únicos y 
+                    oportunidades de las pequeñas y medianas empresas.
+                </p>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">💡</div>
+                <h3 class="service-title">Calidad Garantizada</h3>
+                <p class="service-description">
+                    Nos enorgullece la robustez de sus soluciones 
+                    MCP. Cada desarrollo funciona sin problemas.
+                </p>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">⚡</div>
+                <h3 class="service-title">Instalación Rápida</h3>
+                <p class="service-description">
+                    Nuestras soluciones están en marcha rápidamente. 
+                    Te tenemos con nuevas herramientas de IA.
+                </p>
+            </div>
+        </div>
+
+        <!-- Testimonials -->
+         <!--
+        <h2 class="section-title">Lo que Dicen Nuestros Clientes</h2>
+        <p class="section-subtitle">
+            No solo tomes nuestra palabra. Esto es lo que empresas como la tuya están diciendo 
+            sobre nuestras soluciones MCP.
+        </p>
+
+        <div class="testimonials">
+            <div class="testimonial-card">
+                <div class="stars">⭐⭐⭐⭐⭐</div>
+                <p class="testimonial-text">
+                    "La solución MCP transformó nuestro proceso de documentación de clientes. 
+                    Pasamos de horas de análisis manual a insights automáticos en segundos."
+                </p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">MG</div>
+                    <div class="author-info">
+                        <h4>María González</h4>
+                        <p>CEO, Innovación Digital</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testimonial-card">
+                <div class="stars">⭐⭐⭐⭐⭐</div>
+                <p class="testimonial-text">
+                    "Implementar su integración ERP con el MCP nos dio acceso en tiempo real 
+                    que antes habíamos tenido. Realmente. Proceso más eficiente."
+                </p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">CR</div>
+                    <div class="author-info">
+                        <h4>Carlos Ruiz</h4>
+                        <p>Director de Operaciones</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testimonial-card">
+                <div class="stars">⭐⭐⭐⭐⭐</div>
+                <p class="testimonial-text">
+                    "Como pequeña empresa, estábamos limitados sobre usar IA. Su herramienta 
+                    gratuita nos ayudó a darnos de cumplimiento empresarial sin soluciones 
+                    caras."
+                </p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">AM</div>
+                    <div class="author-info">
+                        <h4>Ana Martín</h4>
+                        <p>Fundadora, ComercioLocal</p>
+                    </div>
+                </div>
+            </div>
+        </div>-->
+
+        <!-- Contact Form -->
+        <div class="contact-section">
+            <h2 class="section-title">¿Listo para Transformar tu Negocio?</h2>
+            <p class="section-subtitle">
+                Hablemos sobre cómo las soluciones MCP pueden optimizar tus operaciones y 
+                desbloquear nuevas posibilidades para tu negocio.
+            </p>
+
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h3>Ponte en Contacto</h3>
+                    <div class="contact-item">
+                        <div class="contact-icon">📧</div>
+                        <div>
+                            <strong>Email</strong>
+                            <p>TTia@gmail.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">📱</div>
+                        <div>
+                            <strong>Teléfono</strong>
+                            <p>+34 691191095</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">📍</div>
+                        <div>
+                            <strong>Ubicación</strong>
+                            <p>Sabadell, Barcelona</p>
+                        </div>
+                    </div>
+
+                    <div style="margin-top: 30px; padding-top: 30px; border-top: 1px solid #eee;">
+                        <h4>Consulta Gratuita</h4>
+                        <p style="color: #666; margin-top: 10px;">
+                            Obtén una consulta gratuita de 30 minutos para discutir 
+                            la mejor solución MCP y empezar camino hacia la innovación y éxito.
+                        </p>
+                    </div>
+                </div>
+
+                <form>
+                    <div class="form-group">
+                        <label>Nombre *</label>
+                        <input type="text" placeholder="Tu nombre" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Empresa</label>
+                        <input type="text" placeholder="Nombre de tu empresa">
+                    </div>
+                    <div class="form-group">
+                        <label>Email *</label>
+                        <input type="email" placeholder="tu@email.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label>¿Cómo Podemos?</label>
+                        <textarea placeholder="Cuéntanos sobre tu proyecto o necesidades..."></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">📨 Enviar Mensaje</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('¡Gracias por tu mensaje! Te contactaremos pronto.');
+        });
+
+        document.querySelectorAll('.filter-btn, .learn-more, .cta-button').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+            });
+        });
+    </script>
+</body>
+</html>
