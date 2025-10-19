@@ -701,6 +701,13 @@ La majoria de les vegades que un agent no funciona de manera fiable, la causa su
                     `?subject=${encode(subject)}` +
                     `&body=${encode(bodyLines.join('\n'))}`;
 
+                // Clear the form so fields are empty when the user returns
+                try {
+                    form.reset();
+                } catch (err) {
+                    /* ignore reset errors */
+                }
+
                 // Open user's email client with the composed message
                 window.location.href = mailto;
             });
