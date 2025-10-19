@@ -376,17 +376,19 @@
     <div class="container">
         <header>
             <div class="header-badge">
-                <svg fill="currentColor" viewBox="0 0 20 20">
+                <!--<svg fill="currentColor" viewBox="0 0 20 20">
                     <path d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/>
                 </svg>
-                Què es un MCP server? - Per a què un MCP server?
+                Què es un MCP server? - Per a què un MCP server?-->
             </div>
             
-            <h1> Contextualitza la IA amb el teu negoci amb<br><span class="highlight">MCP Servers</span></h1>
+            <h1> Contextualitza la IA amb el teu negoci </h1>
+            <h1><span class="highlight">MCP Servers</span></h1>
             
             <p class="subtitle">
                 Conecta les teves APIs, bases de dades, ERPs y 
-                documentació per a donar context a la IA ( models LLM ) per a les teves operacions.Integracions personalizades per als MCP servers.</p>
+                documentació per a donar context a la IA ( models LLM ) per a les teves operacions.Integracions personalizades per als MCP servers.
+            Puedes pensarlo como un contrato que dice: esto es lo que puedes hacer, y así es como hacerlo de forma segura.</p>
              <p class="subtitle">
                L'enginyeria de context consisteix a construir sistemes dinàmics per proporcionar la informació i les eines correctes en el format adequat, de manera que el LLM (Model Lingüístic Gran) pugui dur a terme la tasca de manera plausible.
 
@@ -498,7 +500,7 @@ La majoria de les vegades que un agent no funciona de manera fiable, la causa su
         </div>
 
         <!-- Why Choose Us -->
-        <h2 class="section-title">¿Por qué Triar les Nuestres<br><span class="highlight">Sol·lucions MCP</span>?</h2>
+        <h2 class="section-title">¿Por què triar les nostres<br><span class="highlight">Sol·lucions MCP</span>?</h2>
 
         <div class="services-grid" style="margin-top: 40px;">
             <div class="service-card">
@@ -610,7 +612,7 @@ La majoria de les vegades que un agent no funciona de manera fiable, la causa su
                         <div class="contact-icon">📧</div>
                         <div>
                             <strong>Email</strong>
-                            <p>TTia@gmail.com</p>
+                            <p>ttiamcp@gmail.com</p>
                         </div>
                     </div>
                     <div class="contact-item">
@@ -637,22 +639,22 @@ La majoria de les vegades que un agent no funciona de manera fiable, la causa su
                     </div>
                 </div>
 
-                <form>
+                <form id="contactForm">
                     <div class="form-group">
-                        <label>Nombre *</label>
-                        <input type="text" placeholder="Tu nombre" required>
+                        <label for="name">Nombre *</label>
+                        <input id="name" name="name" type="text" placeholder="Tu nombre" required>
                     </div>
                     <div class="form-group">
-                        <label>Empresa</label>
-                        <input type="text" placeholder="Nombre de tu empresa">
+                        <label for="company">Empresa</label>
+                        <input id="company" name="company" type="text" placeholder="Nombre de tu empresa">
                     </div>
                     <div class="form-group">
-                        <label>Email *</label>
-                        <input type="email" placeholder="tu@email.com" required>
+                        <label for="email">Email *</label>
+                        <input id="email" name="email" type="email" placeholder="tu@email.com" required>
                     </div>
                     <div class="form-group">
-                        <label>¿Cómo Podemos?</label>
-                        <textarea placeholder="Cuéntanos sobre tu proyecto o necesidades..."></textarea>
+                        <label for="message">¿Cómo Podemos?</label>
+                        <textarea id="message" name="message" placeholder="Cuéntanos sobre tu proyecto o necesidades..."></textarea>
                     </div>
                     <button type="submit" class="submit-btn">📨 Enviar Mensaje</button>
                 </form>
@@ -661,16 +663,55 @@ La majoria de les vegades que un agent no funciona de manera fiable, la causa su
     </div>
 
     <script>
-        document.querySelector('form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('¡Gracias por tu mensaje! Te contactaremos pronto.');
-        });
+        // Submit handler: build a mailto: link addressed to ttiamcp@gmail.com
+        (function() {
+            const form = document.getElementById('contactForm');
+            const targetEmail = 'ttiamcp@gmail.com';
 
-        document.querySelectorAll('.filter-btn, .learn-more, .cta-button').forEach(btn => {
-            btn.addEventListener('click', function(e) {
+            function encode(value) {
+                return encodeURIComponent(value || '');
+            }
+
+            form.addEventListener('submit', function(e) {
                 e.preventDefault();
+
+                // Gather values
+                const name = document.getElementById('name').value.trim();
+                const company = document.getElementById('company').value.trim();
+                const email = document.getElementById('email').value.trim();
+                const message = document.getElementById('message').value.trim();
+
+                // Simple validation
+                if (!name || !email) {
+                    alert('Per favor, completa el nombre i el correu electrònic.');
+                    return;
+                }
+
+                // Build subject and body
+                const subject = `Nou missatge des del web - ${name}`;
+                const bodyLines = [];
+                bodyLines.push(`Nom: ${name}`);
+                if (company) bodyLines.push(`Empresa: ${company}`);
+                bodyLines.push(`Email de contacte: ${email}`);
+                bodyLines.push('');
+                bodyLines.push('Missatge:');
+                bodyLines.push(message || '(cap text)');
+
+                const mailto = `mailto:${targetEmail}` +
+                    `?subject=${encode(subject)}` +
+                    `&body=${encode(bodyLines.join('\n'))}`;
+
+                // Open user's email client with the composed message
+                window.location.href = mailto;
             });
-        });
+
+            // Preserve disabling default behaviour for other buttons
+            document.querySelectorAll('.filter-btn, .learn-more, .cta-button').forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                });
+            });
+        })();
     </script>
 </body>
 </html>
